@@ -1,126 +1,103 @@
-/*ajax·â×°-get
-       @param url:ÇëÇóµÄÂ·¾¶
-       @param data:·¢ËÍµÄÊı¾İ,¸ñÊ½:key1=value1&key2=value2
-       @param callback:»Øµ÷º¯Êı,·½±ãÓÃ»§´¦Àí×Ô¼ºµÄÊı¾İ,´«µİÂß¼­
-*/
+
 function get(url, data, callback){
-       //´´½¨Òì²½¶ÔÏó
+       //åˆ›å»ºå¼‚æ­¥å¯¹è±¡
        var xhr = new XMLHttpRequest();
-       //ÅĞ¶ÏdataÊÇ·ñÎª¿Õ
+       //åˆ¤æ–­dataæ˜¯å¦ä¸ºç©º
        if(data){
            url=url+'?'+data;
        }
-       //ÉèÖÃÇëÇóĞĞ
+       //è®¾ç½®è¯·æ±‚è¡Œ
        xhr.open('get',url);
-       //ÉèÖÃÇëÇóÍ·(get¿ÉÒÔÊ¡ÂÔ)
-       //×¢²á»Øµ÷º¯Êı
+       //è®¾ç½®è¯·æ±‚å¤´(getå¯ä»¥çœç•¥)
+       //æ³¨å†Œå›è°ƒå‡½æ•°
        xhr.onreadystatechange = function(){
             if(xhr.readyState==4&&xhr.status==200){
-                //µ÷ÓÃ´«µİµÄ»Øµ÷º¯Êı
+                //è°ƒç”¨ä¼ é€’çš„å›è°ƒå‡½æ•°
                 callback(xhr.responseText);
             }
        }
-       //·¢ËÍÇëÇóÖ÷Ìå
+       //å‘é€è¯·æ±‚ä¸»ä½“
        xhr.send(null);
 }
-/*ajax·â×°-post
-       @param url:ÇëÇóµÄÂ·¾¶
-       @param data:·¢ËÍµÄÊı¾İ,¸ñÊ½:key1=value1&key2=value2
-       @param callback:»Øµ÷º¯Êı,·½±ãÓÃ»§´¦Àí×Ô¼ºµÄÊı¾İ,´«µİÂß¼­
-*/
 function post(url, data, callback){
-       //´´½¨Òì²½¶ÔÏó
+       //åˆ›å»ºå¼‚æ­¥å¯¹è±¡
        var xhr = new XMLHttpRequest();
-       //ÉèÖÃÇëÇóĞĞ
+       //è®¾ç½®è¯·æ±‚è¡Œ
        xhr.open('post',url);
-       //ÉèÖÃÇëÇóÍ·(postÓĞÊı¾İ·¢ËÍ²ÅĞèÒªÉèÖÃÇëÇóÍ·)
-       //ÅĞ¶ÏÊÇ·ñÓĞÊı¾İ·¢ËÍ
+       //è®¾ç½®è¯·æ±‚å¤´(postæœ‰æ•°æ®å‘é€æ‰éœ€è¦è®¾ç½®è¯·æ±‚å¤´)
+       //åˆ¤æ–­æ˜¯å¦æœ‰æ•°æ®å‘é€
        if(data){
              xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
        }
-       //×¢²á»Øµ÷º¯Êı
+       //æ³¨å†Œå›è°ƒå‡½æ•°
        xhr.onreadystatechange = function(){
              if(xhr.readyState==4&&xhr.status==200){
-                 //µ÷ÓÃ´«µİµÄ»Øµ÷º¯Êı
+                 //è°ƒç”¨ä¼ é€’çš„å›è°ƒå‡½æ•°
                  callback(xhr.responseText);
              }
        }
-       //·¢ËÍÇëÇóÖ÷Ìå
+       //å‘é€è¯·æ±‚ä¸»ä½“
        xhr.send(data);
 }
-/*ajax_tool·â×°
-       @param url:ÇëÇóµÄÂ·¾¶
-       @param type:ÇëÇóµÄ²»Í¬ÀàĞÍget»òpost
-       @param data:·¢ËÍµÄÊı¾İ,¸ñÊ½:key1=value1&key2=value2
-       @param callback:»Øµ÷º¯Êı,·½±ãÓÃ»§´¦Àí×Ô¼ºµÄÊı¾İ,´«µİÂß¼­
-*/
 function ajax_tool(url,type,data,callback){
-       //´´½¨Òì²½¶ÔÏó
+       //åˆ›å»ºå¼‚æ­¥å¯¹è±¡
        var xhr = new XMLHttpRequest();
-       //Èç¹ûÊÇget²¢ÇÒÓĞÊı¾İ
+       //å¦‚æœæ˜¯getå¹¶ä¸”æœ‰æ•°æ®
        if(type=='get'&&data){
             url=url+'?'+data;
        }
-       //ÉèÖÃÇëÇóĞĞ
+       //è®¾ç½®è¯·æ±‚è¡Œ
        xhr.open(type,url);
-       //ÉèÖÃÇëÇóÍ·(postÓĞÊı¾İ·¢ËÍ²ÅĞèÒªÉèÖÃÇëÇóÍ·)
-       //ÅĞ¶ÏÊÇ·ñÓĞÊı¾İ·¢ËÍ
+       //è®¾ç½®è¯·æ±‚å¤´(postæœ‰æ•°æ®å‘é€æ‰éœ€è¦è®¾ç½®è¯·æ±‚å¤´)
+       //åˆ¤æ–­æ˜¯å¦æœ‰æ•°æ®å‘é€
        if(type=='post'&&data){
              xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
        }
-       //×¢²á»Øµ÷º¯Êı
+       //æ³¨å†Œå›è°ƒå‡½æ•°
        xhr.onreadystatechange = function(){
              if(xhr.readyState==4&&xhr.status==200){
-                 //µ÷ÓÃ´«µİµÄ»Øµ÷º¯Êı
+                 //è°ƒç”¨ä¼ é€’çš„å›è°ƒå‡½æ•°
                  callback(xhr.responseText);
              }
        }
-       //·¢ËÍÇëÇóÖ÷Ìå
-       //ÅĞ¶Ï²»Í¬µÄÇëÇóÀàĞÍ
+       //å‘é€è¯·æ±‚ä¸»ä½“
+       //åˆ¤æ–­ä¸åŒçš„è¯·æ±‚ç±»å‹
        xhr.send(type=='post'?data:null);
 }
-/*ajax·â×°
-       @param option:´«ÈëÒ»¸ö¶ÔÏó
-       ÊôĞÔ·Ö±ğÎª(Ë³Ğò¿ÉÒÔ´òÂÒ):
-            url:ÇëÇóµÄÂ·¾¶
-            type:ÇëÇóµÄ²»Í¬ÀàĞÍget»òpost
-            data:·¢ËÍµÄÊı¾İ,¸ñÊ½:key1=value1&key2=value2
-            callback:»Øµ÷º¯Êı,·½±ãÓÃ»§´¦Àí×Ô¼ºµÄÊı¾İ,´«µİÂß¼­           
-*/
 function ajax(option){
-       //´´½¨Òì²½¶ÔÏó
+       //åˆ›å»ºå¼‚æ­¥å¯¹è±¡
        var xhr = new XMLHttpRequest();
-       //Èç¹ûÊÇget²¢ÇÒÓĞÊı¾İ
+       //å¦‚æœæ˜¯getå¹¶ä¸”æœ‰æ•°æ®
        if(option.type=='get'&&option.data){
             option.url=option.url+'?'+option.data;
        }
-       //ÉèÖÃÇëÇóĞĞ
+       //è®¾ç½®è¯·æ±‚è¡Œ
        xhr.open(option.type,option.url);
-       //ÉèÖÃÇëÇóÍ·(postÓĞÊı¾İ·¢ËÍ²ÅĞèÒªÉèÖÃÇëÇóÍ·)
-       //ÅĞ¶ÏÊÇ·ñÓĞÊı¾İ·¢ËÍ
+       //è®¾ç½®è¯·æ±‚å¤´(postæœ‰æ•°æ®å‘é€æ‰éœ€è¦è®¾ç½®è¯·æ±‚å¤´)
+       //åˆ¤æ–­æ˜¯å¦æœ‰æ•°æ®å‘é€
        if(option.type=='post'&&option.data){
              xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
        }
-       //×¢²á»Øµ÷º¯Êı
+       //æ³¨å†Œå›è°ƒå‡½æ•°
        xhr.onreadystatechange = function(){
              if(xhr.readyState==4&&xhr.status==200){
-                 //½ÓÊÕ·µ»ØµÄÊı¾İÀàĞÍ
+                 //æ¥æ”¶è¿”å›çš„æ•°æ®ç±»å‹
                  var type = xhr.getResponseHeader('Content-Type');
-                 //json¸ñÊ½
+                 //jsonæ ¼å¼
                  if(type.indexOf('json')!=-1){
                       option.callback(JSON.parse(xhr.responseText));
                  }
-                 //xml¸ñÊ½
+                 //xmlæ ¼å¼
                  else if(type.indexOf('xml')!=-1){
                       option.callback(xhr.responseXML);
                  } 
-                 //ÆÕÍ¨¸ñÊ½
+                 //æ™®é€šæ ¼å¼
                  else{
                       option.callback(xhr.responseText);
                  }
              }
        }
-       //·¢ËÍÇëÇóÖ÷Ìå
-       //ÅĞ¶Ï²»Í¬µÄÇëÇóÀàĞÍ
+       //å‘é€è¯·æ±‚ä¸»ä½“
+       //åˆ¤æ–­ä¸åŒçš„è¯·æ±‚ç±»å‹
        xhr.send(option.type=='post'?option.data:null);
 }
