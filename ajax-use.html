@@ -9,9 +9,6 @@
                   <input class="get" type="button" value="get测试"/>
                   <input class="post" type="button" value="post测试"/>
                   <input class="ajax" type="button" value="ajax测试"/>
-                  <!--<input class="ajax_tool" type="button" value="ajax_tool测试"/>
-                  <input class="json" type="button" value="获取json"/>
-                  <input class="xml" type="button" value="获取xml"/>-->
                   <!--导入封装的js-->
                   <script src="ajax_tool.js"></script>
                   <script>
@@ -40,32 +37,6 @@
                                     }
                                });
                           }
-                          /*document.querySelector('.ajax_tool').onclick = function(){
-                               //直接调用ajax_tool方法,传入四个个参数url,type,data,callback
-                               ajax_tool('./ajax-test.php','post','name=german&friend=jackson',function(data){
-                                     console.log(data);
-                               });
-                          }
-                          document.querySelector('.json').onclick = function(){
-                               //直接调用ajax方法,传入一个对象
-                               ajax({
-                                    url:'./phpJSON.php',
-                                    type:'get',
-                                    callback:function (data){
-                                          console.log(data);
-                                    }
-                               });
-                          }
-                          document.querySelector('.xml').onclick = function(){
-                               //直接调用ajax方法,传入一个对象
-                               ajax({
-                                    url:'./phpXML.php',
-                                    type:'post',
-                                    callback:function (data){
-                                          console.log(data);
-                                    }
-                               });
-                          }*/
                   </script>
         </body>
 </html>
